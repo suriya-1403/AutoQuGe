@@ -1,61 +1,37 @@
-from flask import Flask
-
-import json
-from flask import Flask, request, jsonify
-from flask_mongoengine import MongoEngine
+from flask import Flask, render_template, session, redirect
+from functools import wraps
+import pymongo
 
 app = Flask(__name__)
-app.config['MONGODB_SETTINGS'] = {
-    'db': 'AutoGe',
-    'host': 'localhost',
-    'port': 27017
-}
-db = MongoEngine()
-db.init_app(app)
+# app.secret_key = b'\xcc^\x91\xea\x17-\xd0W\x03\xa7\xf8J0\xac8\xc5'
 
-class User(db.Document):
-    name = db.StringField()
-    email = db.StringField()
-    def to_json(self):
-        return {"name": self.name,
-                "email": self.email}
+# # Database
+# client = pymongo.MongoClient('localhost', 27017)
+# db = client.user_login_system
 
-@app.route('/', methods=['GET'])
-def query_records():
-    name = request.args.get('name')
-    user = User.objects(name=name).first()
-    if not user:
-        return jsonify({'error': 'data not found'})
-    else:
-        return jsonify(user.to_json())
 
-@app.route('/', methods=['PUT'])
-def create_record():
-    record = json.loads(request.data)
-    user = User(name=record['name'],
-                email=record['email'])
-    user.save()
-    return jsonify(user.to_json())
+# Decorators
+def login_required(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if 'logged_in' in session:
+            return f(*args, **kwargs)
+        else:
+            return redirect('/')
 
-@app.route('/', methods=['POST'])
-def update_record():
-    record = json.loads(request.data)
-    user = User.objects(name=record['name']).first()
-    if not user:
-        return jsonify({'error': 'data not found'})
-    else:
-        user.update(email=record['email'])
-    return jsonify(user.to_json())
+    return wrap
 
-@app.route('/', methods=['DELETE'])
-def delete_record():
-    record = json.loads(request.data)
-    user = User.objects(name=record['name']).first()
-    if not user:
-        return jsonify({'error': 'data not found'})
-    else:
-        user.delete()
-    return jsonify(user.to_json())
 
-if __name__ == "__main__":
-    app.run(debug=True)
+# Routes
+from user import routes
+
+
+@app.route('/')
+def home():
+    return render_template('signup.html')
+
+
+@app.route('/dashboard/')
+@login_required
+def dashboard():
+    return render_template('dashboard.html')
