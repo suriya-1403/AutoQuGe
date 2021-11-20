@@ -1,5 +1,14 @@
 version: "3.8"
 services:
+  app:
+    build: .
+    command: ./run
+    ports:
+      - "5000:5000"
+    volumes:
+      - data:/data
+    links:
+      - mongodb
   mongodb:
     image: mongo
     container_name: mongodb
@@ -10,6 +19,7 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=rootuser
       - MONGO_INITDB_ROOT_PASSWORD=rootpass
+      - MONGO_INITDB_DATABASE=AutoQuGen
   mongo-express:
     image: mongo-express
     container_name: mongo-express
@@ -21,6 +31,7 @@ services:
       - ME_CONFIG_MONGODB_ADMINPASSWORD=rootpass
       - ME_CONFIG_MONGODB_ENABLE_ADMIN=true
       - ME_CONFIG_MONGODB_SERVER=mongodb
+      - ME_CONFIG_MONGODB_URL=mongodb://rootuser:rootpass@mongo:27017/
 volumes:
   data: {}
 networks:
