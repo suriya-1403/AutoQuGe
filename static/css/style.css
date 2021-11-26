@@ -16,7 +16,8 @@ section {
   align-items: center;
   justify-content: center;
   min-height: 55vw;
-  background: linear-gradient(to bottom, #ffd9cc, #d9ccff);
+  /* background: linear-gradient(to bottom, #ffd9cc, #d9ccff); */
+  background: linear-gradient(to bottom, #000, rgb(255, 0, 0));
 }
 
 section .color {
@@ -193,4 +194,71 @@ section .color:nth-child(3) {
 .forget a {
   color: #fff;
   font-weight: 600;
+}
+
+/* Set additional styling options for the columns */
+.column-right {
+float: left;
+width: 50%;
+}
+
+.column-right {
+  float: right;
+width: 50%;
+}
+
+.row:after {
+content: "";
+display: table;
+clear: both;
+}
+.dropbtn {
+  width: 100%;
+  margin-top: 20px;
+}
+.dropbtn button{
+  width: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.dropup {
+  position: relative;
+  display: inline-block;
+}
+
+.dropup-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  bottom: 50px;
+  z-index: 1;
+}
+
+.dropup-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropup-content a:hover {background-color: #ccc}
+
+.dropup:hover .dropup-content {
+  display: block;
+}
+
+.dropup:hover .dropbtn {
+  background-color: #2980B9;
 }
