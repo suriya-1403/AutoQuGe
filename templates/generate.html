@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Youv'e logged in 
+{% endblock %}
+{% block content %}
+<section>
+    <div class="color"></div>
+        <div class="color"></div>
+        <div class="color"></div>
+        <div class="box">
+            <div class="square" style="--i:0;"></div>
+            <div class="square" style="--i:1;"></div>
+            <div class="square" style="--i:2;"></div>
+            <div class="square" style="--i:3;"></div>
+            <div class="square" style="--i:4;"></div>
+            <div class="container">
+               <div class="form">
+                   <h2>Generate Question Paper</h2>
+                   <form action="" method="POST">
+                       <!-- <div class="inputBox">
+                           <input type="text" name="ques" id="ques" placeholder="Question">
+                       </div>
+                       <div class="inputBox">
+                            <input type="password" name="password" id="password" placeholder="Password">
+                        </div> -->
+                        <div class="inputBox">
+                            <select id="challenge" name="challenge">
+                                <option value="Easy">Easy</option>
+                                <option value="Moderate">Moderate</option>
+                                <option value="Hard">Hard</option>
+                            </select>
+                        </div>
+                        
+                        <div class="inputBox">
+                            <input type="submit" id="btnSignUp" value="Generate">
+                        </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+</section>
+{% endblock %}
