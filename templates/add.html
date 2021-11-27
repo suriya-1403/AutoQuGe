@@ -18,17 +18,13 @@
                    <form action="" method="POST">
                        <div class="inputBox">
                            <!-- <input type="text" name="ques" id="ques" placeholder="Question"> -->
-                           <textarea name="question" id="question" rows="4" cols="40">
-                                At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
-                            </textarea>
+                           <textarea name="question" id="question" rows="4" cols="40"> At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
                        </div>
                        <div class="inputBox">
                             <!-- <input type="password" name="password" id="password" placeholder="Password"> -->
-                            <textarea name="answer" id="answer" rows="4" cols="40">
-                                At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
-                            </textarea>
+                            <textarea name="answer" id="answer" rows="4" cols="40"> At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
                         </div>
-                        <div>
+                        <div class="dropBox">
                             <!-- <label for="marks">Choose a car:</label> -->
                                 <select id="marks" name="marks">
                                     <option value="2Mark">2Mark</option>
@@ -50,7 +46,10 @@
                         </div>
                         <div class="inputBox">
                             <input type="submit" id="btnSignUp" value="Add">
-                            <input type="button" id="btnSignUp" value="Back">
+                            <div class="inputBox">
+                                <a href="{{ url_for('logged_in') }}">
+                                <input type="button"  id="btnSignUp" value="Back"></a>
+                            </div>
                         </div>
                    </form>
                </div>
