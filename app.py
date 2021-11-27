@@ -150,7 +150,6 @@ def questionSelect(chall, Module):
 def questionGen(subject, duration, branch, Name, Module):
 
     for x in CourseRecord.find({"Code": subject}):
-
         subjectNa = x["SubjectName"]
 
     q1 = questionSelect("Easy", Module)
@@ -278,10 +277,10 @@ def generate():
             pool.close()
             pool.join()
             print("time in parallel:", time.time() - ts)
-            ts = time.time()
-            questionGen(subject, duration, branch, Name, module)
+            # ts = time.time()
+            # questionGen(subject, duration, branch, Name, module)
 
-            print("time in serial:", time.time() - ts)
+            # print("time in serial:", time.time() - ts)
 
         return render_template("generate.html", email=email)
     else:

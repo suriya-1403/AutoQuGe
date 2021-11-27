@@ -1,11 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% if message  %}
-    <div class="alert alert-secondary" role="alert">
-        <p>{{ message }}</p>
-    </div>
-{% endif %}
+
 <section>
         <div class="color"></div>
         <div class="color"></div>
@@ -27,7 +23,7 @@
                             <input type="password" name="password" id="password" placeholder="Password">
                         </div>
                         <div class="inputBox">
-                            <input type="submit" id="btnSignUp" value="Signup">
+                            <input type="submit" id="btnSignUp" value="SignIn">
                         </div>
                         <!-- <p class="forget">Forgot password?
                             <a href="#">Click here</a>
